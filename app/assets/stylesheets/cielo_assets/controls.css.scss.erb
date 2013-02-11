@@ -1,0 +1,61 @@
+#cielo_controls {
+  input {
+    display: none;
+    &:checked + label {
+      border-color: #777;
+    }
+  }
+  label {
+    width: 60px;
+    height: 60px;
+    border: 5px solid #EEE;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+  	cursor: hand;
+
+    /* http://stackoverflow.com/questions/471510/hide-text-using-css */
+    /* Hide the text. */
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+
+    &:hover {
+      border-color: #AAA;
+    }
+    &.amex {
+      background-image: url(<%= asset_path 'cielo_assets/amex.png' %>)
+    }
+    &.diners {
+      background-image: url(<%= asset_path 'cielo_assets/diners.png' %>)
+    }
+    &.elo {
+      background-image: url(<%= asset_path 'cielo_assets/elo.png' %>)
+    }
+    &.mastercard {
+      background-image: url(<%= asset_path 'cielo_assets/mastercard.png' %>)
+    }
+    &.mastercard_securecode {
+      background-image: url(<%= asset_path 'cielo_assets/mastercard_securecode.png' %>)
+    }
+    &.verified_by_visa {
+      background-image: url(<%= asset_path 'cielo_assets/verified_by_visa.png' %>)
+    }
+    &.visa {
+      background-image: url(<%= asset_path 'cielo_assets/visa.png' %>)
+    }
+  }
+  &.horizontal {
+    label {
+      display: inline-block;
+      margin-right: 5px;
+    }
+  }
+  &.vertical {
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+  }
+}
