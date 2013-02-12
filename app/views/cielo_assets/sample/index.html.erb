@@ -9,11 +9,11 @@
 </style>
 <form>
   <h1>Vertical</h1>
-  <%= cielo_controls 'test[0]', :vertical %>
+  <%= cielo_controls :my_object, :field1, style: :vertical %>
   <%= submit_tag %>
 </form>
 <form>
   <h1>Horizontal</h1>
-  <%= cielo_controls 'test[1]' %>
+  <%= cielo_controls :my_object, :field2 %>
   <%= submit_tag %>
 </form>

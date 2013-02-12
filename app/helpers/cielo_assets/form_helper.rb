@@ -1,11 +1,14 @@
 module CieloAssets
   module FormHelper
-    def cielo_controls name, style=:horizontal
-      content_tag :div, id: :cielo_controls, class: style do
+    def cielo_controls object_name, method, options={}
+      id    = options.delete(:id)    || :cielo_controls
+      style = options.delete(:style) || :horizontal
+
+      content_tag :div, id: id, class: style do
         [:amex,:diners,:elo,:mastercard,:mastercard_securecode,:verified_by_visa,:visa].collect { |flag|
           [
-            radio_button_tag(name, flag),
-            label_tag("#{name}_#{flag}", t(flag), class: flag)
+            radio_button(object_name, method, flag, options),
+            label("#{object_name}_#{method}", flag, options.merge(class: flag))
           ].join.html_safe
         }.join.html_safe
       end
