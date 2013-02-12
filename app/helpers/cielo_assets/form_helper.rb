@@ -1,5 +1,5 @@
 module CieloAssets
-  module ApplicationHelper
+  module FormHelper
     def cielo_controls name, style=:horizontal
       content_tag :div, id: :cielo_controls, class: style do
         [:amex,:diners,:elo,:mastercard,:mastercard_securecode,:verified_by_visa,:visa].collect { |flag|
