@@ -79,3 +79,44 @@ You can provide any arbitrary css class since you define it at your own applicat
       <%= f.cielo_controls :field %>
       <%= f.submit %>
     <% end %>
+
+## Validation and FieldWithErrors workaround
+
+When rails fields fails to validate, the corresponding field is surrounded by a div with field_with_errors
+class. This breaks CieloAssets behavior, because it expects input and labels are adjacent, to highlight
+the checked control:
+
+    input {
+      display: none;
+      &:checked + label {
+        border-color: #777;
+      }
+    }
+
+To avoid this side effect, add
+[this workaround](http://stackoverflow.com/questions/5267998/rails-3-field-with-errors-wrapper-changes-the-page-appearance-how-to-avoid-t)
+on your project's ``` config/application.rb ```:
+
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance|
+      if instance.object.respond_to? "disable_field_with_errors_for_#{instance.method_name}"
+        html_tag.html_safe
+      else
+        "<div class=\"field_with_errors\">#{html_tag}</div>".html_safe
+      end
+    }
+
+and declare the fields (via attr_reader or an empty method, for example)
+that should not be surrounded by ``` field_with_errors ``` div when validation fails:
+
+    # supposes attribute is named cielo_flag
+    attr_accessible :cielo_flag
+
+    attr_reader :disable_field_with_errors_for_cielo_flag
+
+or
+
+    # supposes attribute is named flag
+    attr_accessible :flag
+
+    def disable_field_with_errors_for_flag
+    end
