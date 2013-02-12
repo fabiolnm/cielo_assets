@@ -8,4 +8,11 @@ module CieloAssets
       end
     end
   end
+
+  # Monkey patches FormBuilder
+  class ActionView::Helpers::FormBuilder
+    def cielo_controls method, options={}
+      @template.cielo_controls @object_name, method, options
+    end
+  end
 end

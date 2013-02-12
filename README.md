@@ -72,3 +72,10 @@ This only changes the container class:
     </div>
 
 You can provide any arbitrary css class since you define it at your own application.
+
+## FormBuilder Usage
+
+    <%= form_for :my_object do |f| %>
+      <%= f.cielo_controls :field %>
+      <%= f.submit %>
+    <% end %>

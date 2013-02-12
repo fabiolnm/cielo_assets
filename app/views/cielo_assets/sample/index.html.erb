@@ -17,3 +17,10 @@
   <%= cielo_controls :my_object, :field2 %>
   <%= submit_tag %>
 </form>
+
+<%= form_for :my_object do |f| %>
+  <h1>With Form Builder</h1>
+
+  <%= f.cielo_controls :field %>
+  <%= f.submit %>
+<% end %>
