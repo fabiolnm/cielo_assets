@@ -8,7 +8,7 @@ module CieloAssets
         [:amex,:diners,:elo,:mastercard,:mastercard_securecode,:verified_by_visa,:visa].collect { |flag|
           [
             radio_button(object_name, method, flag, options),
-            label("#{object_name}_#{method}", flag, options.merge(class: flag))
+            label("#{object_name}_#{method}", flag, options.merge(class: "#{flag} selectable"))
           ].join.html_safe
         }.join.html_safe
       end

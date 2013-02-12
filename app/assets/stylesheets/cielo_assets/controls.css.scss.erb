@@ -6,14 +6,12 @@
     }
   }
   label {
-    width: 60px;
-    height: 60px;
-    border: 5px solid #EEE;
+    width: 90px;
+    height: 90px;
+    cursor: default;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    cursor: pointer;
-  	cursor: hand;
 
     /* http://stackoverflow.com/questions/471510/hide-text-using-css */
     /* Hide the text. */
@@ -21,8 +19,14 @@
     white-space: nowrap;
     overflow: hidden;
 
-    &:hover {
-      border-color: #AAA;
+    &.selectable {
+      width: 60px;
+      height: 60px;
+      border: 5px solid #EEE;
+      cursor: hand;
+      &:hover {
+        border-color: #AAA;
+      }
     }
     &.amex {
       background-image: url(<%= asset_path 'cielo_assets/amex.png' %>)
