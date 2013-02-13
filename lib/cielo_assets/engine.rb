@@ -12,6 +12,7 @@ module CieloAssets
   # Monkey patches FormBuilder
   class ActionView::Helpers::FormBuilder
     def cielo_controls method, options={}
+      options.merge! object: @object
       @template.cielo_controls @object_name, method, options
     end
   end
